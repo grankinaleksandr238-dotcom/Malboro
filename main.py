@@ -10,7 +10,7 @@ from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.utils import executor
-from aiogram.utils.exceptions import BotBlocked, UserDeactivated, ChatNotFound, RetryAfter, TelegramAPIError, MessageNotModified, MessageToEditNotFound, TerminatedByOtherGetUpdate
+from aiogram.utils.exceptions import BotBlocked, UserDeactivated, ChatNotFound, RetryAfter, TelegramAPIError, MessageNotModified, MessageToEditNotFound, TerminatedByOtherGetUpdates
 import aiosqlite
 from aiohttp import web
 
@@ -2592,7 +2592,7 @@ if __name__ == "__main__":
     while True:
         try:
             executor.start_polling(dp, skip_updates=True, on_startup=on_startup, on_shutdown=on_shutdown)
-        except TerminatedByOtherGetUpdate:
+        except TerminatedByOtherGetUpdates:
             logging.error("Обнаружен конфликт с другим экземпляром бота. Повторная попытка через 5 секунд...")
             time.sleep(5)
             continue
